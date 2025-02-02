@@ -20,15 +20,15 @@ export default function SustainabilityScore() {
   return (
     <div className="bg-gray-800/50 rounded-xl p-4 cursor-pointer scale-[0.97] hover:scale-[1] transition-all duration-500 ease-in-out">
       <div className="flex items-center justify-between mb-6">
-        <h3 className="font-medium">Sustainability Summary</h3>
+        <h3 className="font-medium text-[80%] md:text-base">Sustainability Summary</h3>
         <MdCalendarToday className="text-gray-400" />
       </div>
 
       <div className="flex justify-between mb-6">
         {days.map((day) => (
           <div key={day.day} className="text-center">
-            <div className="text-gray-400 mb-1">{day.day}</div>
-            <div className="text-xl font-bold">{day.date}</div>
+            <div className="text-gray-400 mb-1 text-[80%] md:text-base">{day.day}</div>
+            <div className="text-base md:text-xl font-bold">{day.date}</div>
             <div className="flex justify-center gap-0.5 mt-1">
               <div className={`w-1 h-1 rounded-full ${getScoreColor(day.score)}`} />
               <div className={`w-1 h-1 rounded-full ${getScoreColor(day.score)}`} />
@@ -39,11 +39,11 @@ export default function SustainabilityScore() {
       </div>
 
       <div className="text-center">
-        <div className="text-4xl font-bold mb-2">{averageScore.toFixed(2)}</div>
-        <div className="text-gray-400 text-sm">Average sustainability score</div>
+        <div className="text-3xl md:text-4xl font-bold mb-2">{averageScore.toFixed(2)}</div>
+        <div className="text-gray-400 text-[80%] md:text-sm">Average sustainability score</div>
       </div>
 
-      <div className="mt-4 text-sm text-gray-400">
+      <div className="mt-4 text-[80%] md:text-sm text-gray-400">
         Score breakdown: Energy efficiency, Waste reduction, Water conservation
       </div>
     </div>

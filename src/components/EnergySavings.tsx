@@ -14,8 +14,8 @@ export default function EnergySavings() {
   return (
     <div className="bg-gray-800 rounded-xl p-4 cursor-pointer scale-[0.97] hover:scale-[1] transition-all duration-500 ease-in-out">
       <div className="flex items-center justify-between mb-4">
-        <h3 className="font-medium">Energy Savings</h3>
-        <span className="text-xs text-gray-400">Weekly Overview</span>
+        <h3 className="font-medium text-[80%] md:text-base">Energy Savings</h3>
+        <span className="text-[70%] md:text-xs text-gray-400">Weekly Overview</span>
       </div>
       <div className="h-48">
         <ResponsiveContainer width="100%" height="100%">

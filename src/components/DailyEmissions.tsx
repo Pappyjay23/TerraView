@@ -12,8 +12,8 @@ export default function DailyEmissions() {
   return (
     <div className="bg-gray-800 rounded-xl p-4 cursor-pointer scale-[0.97] hover:scale-[1] transition-all duration-500 ease-in-out">
       <div className="flex items-center justify-between mb-4">
-        <h3 className="font-medium">Daily Carbon Emissions</h3>
-        <span className="text-xs text-gray-400">Last 24h</span>
+        <h3 className="font-medium text-[80%] md:text-base">Daily Carbon Emissions</h3>
+        <span className="text-[70%] md:text-xs text-gray-400">Last 24h</span>
       </div>
       <div className="relative h-48 flex gap-3">
         <PieChart width={200} height={200}>
@@ -25,8 +25,8 @@ export default function DailyEmissions() {
         </PieChart>
         <div className="flex items-center justify-center">
           <div className="text-center">
-            <span className="block text-3xl font-bold">20%</span>
-            <span className="text-sm text-gray-400">Reduction</span>
+            <span className="block text-xl md:text-3xl font-bold">20%</span>
+            <span className="text-[80%] md:text-sm text-gray-400">Reduction</span>
           </div>
         </div>
       </div>

@@ -13,9 +13,9 @@ export default function App() {
         <Sidebar />
 
         <div className="flex-1 overflow-auto">
-          <header className="flex items-center justify-between p-4 border-b border-gray-800">
-            <h1 className="text-xl font-semibold">Sustainability Dashboard</h1>
-            <div className="flex items-center gap-4">
+          <header className="flex items-center justify-between p-4 border-b border-gray-800 w-full overflow-auto">
+            <h1 className="text-[1rem] font-semibold hidden md:flex">Sustainability Dashboard</h1>
+            <div className="flex items-center gap-2 md:gap-4">
               <div className="relative">
                 <MdSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 h-4 w-4" />
                 <input

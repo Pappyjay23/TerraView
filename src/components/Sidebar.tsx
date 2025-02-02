@@ -29,24 +29,30 @@ export default function Sidebar() {
 	];
 
 	return (
-		<aside className='w-64 bg-gray-800 p-4 flex flex-col'>
+		<aside className='w-18 md:w-42 lg:w-64 bg-gray-800 p-4 flex flex-col'>
 			{/* Logo */}
 			<div className='mb-8'>
-				<Link to='/' className='text-green-500 text-2xl font-bold'>
+				<Link
+					to='/'
+					className='text-green-500 text-2xl font-extrabold hidden md:flex'>
 					TerraView
+				</Link>
+				<Link to='/' className='text-green-500 text-[1rem] font-extrabold md:hidden'>
+					Terra
 				</Link>
 			</div>
 
 			{/* User Profile */}
-			<div className='flex items-center gap-3 mb-8'>
+			<div className='flex flex-col lg:flex-row items-center gap-3 mb-8'>
 				<img
 					src='https://media.istockphoto.com/id/1437816897/photo/business-woman-manager-or-human-resources-portrait-for-career-success-company-we-are-hiring.jpg?s=2048x2048&w=is&k=20&c=8QovDK9XochFpaIC-N3pn5EEaRSVuE1SKpQDVUxLSUk='
 					alt='User avatar'
-					className='w-10 h-10 rounded-full object-cover'
+					className='w-6 h-6 md:w-10 md:h-10 rounded-full object-cover'
 				/>
-				<div>
-					<h3 className='font-medium'>Sarah Connor</h3>
-					<p className='text-sm text-gray-400'>Admin</p>
+				<div className='text-center lg:text-left'>
+					<h3 className='font-medium text-sm md:text-base md:hidden'>Sarah</h3>
+					<h3 className='font-medium text-sm md:text-base hidden md:flex'>Sarah Connor</h3>
+					<p className='text-[70%] md:text-sm text-gray-400'>Admin</p>
 				</div>
 			</div>
 
@@ -63,7 +69,7 @@ export default function Sidebar() {
 										: "text-gray-400 hover:text-gray-100"
 								}`}>
 								{link.icon}
-								{link.title}
+								<span className='hidden md:flex'>{link.title}</span>
 							</Link>
 						</li>
 					))}
@@ -80,11 +86,11 @@ export default function Sidebar() {
 							: "text-gray-400 hover:text-gray-100"
 					}`}>
 					<MdSettings className='h-5 w-5' />
-					Settings
+					<span className='hidden md:flex'>Settings</span>
 				</Link>
 				<button className='flex items-center gap-3 px-3 py-2 text-gray-400 hover:text-gray-100 hover:bg-red-500 cursor-pointer transition-all duration-500 ease-in-out rounded-lg w-full'>
 					<MdLogout className='h-5 w-5' />
-					Log Out
+					<span className='hidden md:flex'>Log Out</span>
 				</button>
 			</div>
 		</aside>

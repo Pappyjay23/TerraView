@@ -30,12 +30,12 @@ export default function WeeklyTrends() {
 		<div className='bg-gray-800 rounded-xl p-4 cursor-pointer scale-[0.97] hover:scale-[1] transition-all duration-500 ease-in-out'>
 			<div className='flex items-center justify-between mb-4'>
 				<div className='flex items-center gap-2'>
-					<h3 className='font-medium'>Weekly Sustainability Trends</h3>
+					<h3 className='font-medium text-[80%] md:text-base'>Weekly Sustainability Trends</h3>
 					<MdTrendingUp
 						className={emissionsChange < 0 ? "text-green-500" : "text-red-500"}
 					/>
 				</div>
-				<span className='text-sm font-semibold'>
+				<span className='text-[70%] md:text-sm font-semibold'>
 					{emissionsChange < 0 ? "↓" : "↑"} {Math.abs(Number(emissionsChange))}%
 				</span>
 			</div>
@@ -82,7 +82,7 @@ export default function WeeklyTrends() {
 					</LineChart>
 				</ResponsiveContainer>
 			</div>
-			<div className='mt-4 text-sm text-gray-400'>
+			<div className='mt-4 text-[70%] md:text-sm text-gray-400'>
 				Showing CO2 emissions and energy usage trends for the past week
 			</div>
 		</div>
