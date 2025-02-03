@@ -1,6 +1,17 @@
 @import "tailwindcss";
 
-*{
-    box-sizing: border-box;
-    font-family: "Plus Jakarta Sans", sans-serif;
+* {
+	box-sizing: border-box;
+	font-family: "Plus Jakarta Sans", "Inter", sans-serif;
+}
+
+.loader {
+	animation: spin 1s linear infinite;
+	box-shadow: 0 0 8px rgba(52, 152, 219, 0.5);
+}
+
+@keyframes spin {
+	100% {
+		transform: rotate(360deg);
+	}
 }

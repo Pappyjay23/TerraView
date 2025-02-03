@@ -34,10 +34,10 @@ export default function Sidebar() {
 			<div className='mb-8'>
 				<Link
 					to='/'
-					className='text-green-500 text-2xl font-extrabold hidden md:flex'>
+					className='text-green-500 text-2xl font-extrabold hidden md:flex tracking-[-1px]'>
 					TerraView
 				</Link>
-				<Link to='/' className='text-green-500 text-[1rem] font-extrabold md:hidden'>
+				<Link to='/' className='text-green-500 text-[1rem] font-extrabold md:hidden tracking-[-1px]'>
 					Terra
 				</Link>
 			</div>
@@ -60,7 +60,7 @@ export default function Sidebar() {
 			<nav className='flex-1'>
 				<ul className='space-y-2'>
 					{navLinks.map((link) => (
-						<li>
+						<li key={link.title}>
 							<Link
 								to={link.path}
 								className={`flex items-center gap-3 px-3 py-2 rounded-lg transition-all duration-500 ease-in-out ${
