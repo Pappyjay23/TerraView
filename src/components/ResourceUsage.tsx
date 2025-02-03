@@ -4,18 +4,19 @@ import { ResourceData } from "../types";
 import Loader from "./Loader";
 import { MdBolt, MdRecycling, MdWaterDrop } from "react-icons/md";
 import { IconType } from "react-icons";
-
+import { ThemeContextUse } from "../context/ThemeProvider";
 
 const iconMap: Record<string, IconType> = {
-  MdWaterDrop: MdWaterDrop,
-  MdBolt: MdBolt,
-  MdRecycling: MdRecycling,
+	MdWaterDrop: MdWaterDrop,
+	MdBolt: MdBolt,
+	MdRecycling: MdRecycling,
 };
 
 const ResourceUsage = () => {
 	const [resources, setResources] = useState<ResourceData[]>([]);
 	const [usageWidths, setUsageWidths] = useState<number[]>([]);
 	const [loading, setLoading] = useState(true);
+	const { isDarkMode } = ThemeContextUse();
 
 	useEffect(() => {
 		fetchMockData("/dashboard")
@@ -31,8 +32,11 @@ const ResourceUsage = () => {
 	}, []);
 
 	return (
-		<div className='bg-gray-800 rounded-xl p-4 scale-[0.97] hover:scale-[1.02] transition-all duration-500 ease-in-out cursor-pointer'>
-			<h3 className='font-medium mb-4 text-[80%] md:text-base'>
+		<div
+			className={`${
+				isDarkMode ? "bg-gray-800" : "bg-gray-200"
+			} rounded-xl p-4 cursor-pointer scale-[0.97] hover:scale-[1] transition-all duration-500 ease-in-out`}>
+			<h3 className={`font-medium mb-4 text-[80%] md:text-base ${isDarkMode ? "text-gray-200" : "text-gray-800"}`}>
 				Resource Usage
 			</h3>
 
@@ -44,17 +48,17 @@ const ResourceUsage = () => {
 						const Icon = iconMap[resource.icon];
 						return (
 							<div key={resource.name} className='flex items-center gap-4'>
-								<div className={`p-2 bg-${resource.color}-500/20 rounded-lg`}>
+								<div className={`p-2 bg-${resource.color}-500/30 rounded-lg`}>
 									<Icon
 										className={`text-${resource.color}-500 text-base md:text-xl`}
 									/>
 								</div>
 								<div className='flex-1'>
 									<div className='flex justify-between mb-1'>
-										<span className='text-[80%] md:text-sm text-gray-400'>
+										<span className={`text-[80%] md:text-sm text-gray-400 ${isDarkMode ? "text-gray-200" : "text-gray-800"}`}>
 											{resource.name}
 										</span>
-										<span className='text-[80%] md:text-sm'>
+										<span className={`text-[80%] md:text-sm ${isDarkMode ? "text-gray-100" : "text-gray-800"}`}>
 											{resource.value}%
 										</span>
 									</div>

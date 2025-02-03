@@ -11,10 +11,12 @@ import {
 import { fetchMockData } from "../services/api";
 import { WeeklyTrendsData } from "../types";
 import Loader from "./Loader";
+import { ThemeContextUse } from "../context/ThemeProvider";
 
 export default function WeeklyTrends() {
 	const [data, setData] = useState<WeeklyTrendsData[]>([]);
 	const [loading, setLoading] = useState(true);
+	const { isDarkMode } = ThemeContextUse();
 
 	useEffect(() => {
 		fetchMockData("/dashboard")
@@ -36,17 +38,17 @@ export default function WeeklyTrends() {
 			: 0;
 
 	return (
-		<div className='bg-gray-800 rounded-xl p-4 cursor-pointer scale-[0.97] hover:scale-[1] transition-all duration-500 ease-in-out'>
+		<div className={`${isDarkMode ? 'bg-gray-800' : 'bg-gray-200'} rounded-xl p-4 cursor-pointer scale-[0.97] hover:scale-[1] transition-all duration-500 ease-in-out`}>
 			<div className='flex items-center justify-between mb-4'>
 				<div className='flex items-center gap-2'>
-					<h3 className='font-medium text-[80%] md:text-base'>
+					<h3 className={`font-medium text-[80%] md:text-base ${isDarkMode ? 'text-gray-200' : 'text-gray-800'}`}>
 						Weekly Sustainability Trends
 					</h3>
 					<MdTrendingUp
 						className={emissionsChange < 0 ? "text-green-500" : "text-red-500"}
 					/>
 				</div>
-				<span className='text-[70%] md:text-sm font-semibold'>
+				<span className={`text-[70%] md:text-sm font-semibold ${isDarkMode ? 'text-gray-200' : 'text-gray-800'}`}>
 					{emissionsChange < 0 ? "↓" : "↑"} {Math.abs(Number(emissionsChange))}%
 				</span>
 			</div>
@@ -97,7 +99,7 @@ export default function WeeklyTrends() {
 							</LineChart>
 						</ResponsiveContainer>
 					</div>
-					<div className='mt-4 text-[70%] md:text-sm text-gray-400'>
+					<div className={`mt-4 text-[70%] md:text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-700'}`}>
 						Showing CO2 emissions and energy usage trends for the past week
 					</div>
 				</>

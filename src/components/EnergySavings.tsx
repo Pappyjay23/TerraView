@@ -3,8 +3,10 @@ import { Area, AreaChart, ResponsiveContainer, XAxis, YAxis } from "recharts";
 import { fetchMockData } from "../services/api";
 import { EnergySavingsData } from "../types";
 import Loader from "./Loader";
+import { ThemeContextUse } from "../context/ThemeProvider";
 
 export default function EnergySavings() {
+	const { isDarkMode } = ThemeContextUse();
 	const [data, setData] = useState<EnergySavingsData[]>([]);
 	const [loading, setLoading] = useState(true);
 
@@ -17,10 +19,12 @@ export default function EnergySavings() {
 	}, []);
 
 	return (
-		<div className='bg-gray-800 rounded-xl p-4 cursor-pointer scale-[0.97] hover:scale-[1] transition-all duration-500 ease-in-out'>
+		<div className={`${isDarkMode ? 'bg-gray-800' : 'bg-gray-200'} rounded-xl p-4 cursor-pointer scale-[0.97] hover:scale-[1] transition-all duration-500 ease-in-out`}>
 			<div className='flex items-center justify-between mb-4'>
-				<h3 className='font-medium text-[80%] md:text-base'>Energy Savings</h3>
-				<span className='text-[70%] md:text-xs text-gray-400'>
+				<h3 className={`font-medium text-[80%] md:text-base ${isDarkMode ? 'text-gray-200' : 'text-gray-800'}`}>
+					Energy Savings
+				</h3>
+				<span className={`text-[70%] md:text-xs ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
 					Weekly Overview
 				</span>
 			</div>
@@ -36,16 +40,18 @@ export default function EnergySavings() {
 						</defs>
 						<XAxis
 							dataKey='name'
-							stroke='#4b5563'
+							stroke={isDarkMode ? '#4b5563' : '#6b7280'}
 							fontSize={12}
 							tickLine={false}
 							axisLine={false}
+							tick={{ fill: isDarkMode ? '#9ca3af' : '#4b5563' }}
 						/>
 						<YAxis
-							stroke='#4b5563'
+							stroke={isDarkMode ? '#4b5563' : '#6b7280'}
 							fontSize={12}
 							tickLine={false}
 							axisLine={false}
+							tick={{ fill: isDarkMode ? '#9ca3af' : '#4b5563' }}
 							tickFormatter={(value) => `${value}%`}
 						/>
 						<Area

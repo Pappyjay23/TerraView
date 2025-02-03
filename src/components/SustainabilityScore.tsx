@@ -3,6 +3,7 @@ import { MdCalendarToday } from "react-icons/md";
 import { fetchMockData } from "../services/api";
 import { SustainabilityScoreData } from "../types";
 import Loader from "./Loader";
+import { ThemeContextUse } from "../context/ThemeProvider";
 
 function getScoreColor(score: number) {
 	if (score >= 90) return "bg-green-500";
@@ -13,6 +14,7 @@ function getScoreColor(score: number) {
 export default function SustainabilityScore() {
 	const [days, setDays] = useState<SustainabilityScoreData[]>([]);
 	const [loading, setLoading] = useState(true);
+	const { isDarkMode } = ThemeContextUse();
 
 	useEffect(() => {
 		fetchMockData("/dashboard")
@@ -28,12 +30,20 @@ export default function SustainabilityScore() {
 			: 0;
 
 	return (
-		<div className='bg-gray-800/50 rounded-xl p-4 cursor-pointer scale-[0.97] hover:scale-[1] transition-all duration-500 ease-in-out'>
+		<div
+			className={`${
+				isDarkMode ? "bg-gray-800" : "bg-gray-200"
+			} rounded-xl p-4 cursor-pointer scale-[0.97] hover:scale-[1] transition-all duration-500 ease-in-out`}>
 			<div className='flex items-center justify-between mb-6'>
-				<h3 className='font-medium text-[80%] md:text-base'>
+				<h3
+					className={`font-medium text-[80%] md:text-base ${
+						isDarkMode ? "text-gray-200" : "text-gray-800"
+					}`}>
 					Sustainability Summary
 				</h3>
-				<MdCalendarToday className='text-gray-400' />
+				<MdCalendarToday
+					className={`${isDarkMode ? "text-gray-400" : "text-gray-600"}`}
+				/>
 			</div>
 
 			{loading ? (
@@ -43,10 +53,10 @@ export default function SustainabilityScore() {
 					<div className='flex justify-between mb-6'>
 						{days.map((day) => (
 							<div key={day.day} className='text-center'>
-								<div className='text-gray-400 mb-1 text-[80%] md:text-base'>
+								<div className={`${isDarkMode ? "text-gray-400" : "text-gray-600"} mb-1 text-[80%] md:text-base`}>
 									{day.day}
 								</div>
-								<div className='text-base md:text-xl font-bold'>{day.date}</div>
+								<div className={`${isDarkMode ? "text-gray-100" : "text-gray-600"} text-base md:text-xl font-bold`}>{day.date}</div>
 								<div className='flex justify-center gap-0.5 mt-1'>
 									<div
 										className={`w-1 h-1 rounded-full ${getScoreColor(
@@ -69,15 +79,15 @@ export default function SustainabilityScore() {
 					</div>
 
 					<div className='text-center'>
-						<div className='text-3xl md:text-4xl font-bold mb-2'>
+						<div className={`${isDarkMode ? "text-gray-100" : "text-gray-900"} text-3xl md:text-4xl font-bold mb-2`}>
 							{averageScore.toFixed(2)}
 						</div>
-						<div className='text-gray-400 text-[80%] md:text-sm'>
+						<div className={`${isDarkMode ? "text-gray-400" : "text-gray-600"} text-[80%] md:text-sm`}>
 							Average sustainability score
 						</div>
 					</div>
 
-					<div className='mt-4 text-[80%] md:text-sm text-gray-400'>
+					<div className={`mt-4 text-[80%] md:text-sm ${isDarkMode ? "text-gray-400" : "text-gray-600"}`}>
 						Score breakdown: Energy efficiency, Waste reduction, Water
 						conservation
 					</div>
