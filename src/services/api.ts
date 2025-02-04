@@ -50,7 +50,7 @@ const originalMockDatabase: Record<string, DatabaseType> = {
 };
 
 // Function to generate dynamic scores based on date range
-function generateDynamicScores(startDate: string, endDate: string) {
+const generateDynamicScores = (startDate: string, endDate: string) => {
   const start = parseInt(startDate.split('-')[2] || '14', 10);
   const end = parseInt(endDate.split('-')[2] || '18', 10);
   
@@ -81,7 +81,7 @@ function generateDynamicScores(startDate: string, endDate: string) {
     });
 }
 
-function generateDynamicEmissions(startDate: string) {
+const generateDynamicEmissions = (startDate: string) => {
   const start = parseInt(startDate.split('-')[2] || '14', 10);
   
   // Base emissions with potential for more significant variation

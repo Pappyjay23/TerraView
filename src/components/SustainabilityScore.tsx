@@ -5,24 +5,24 @@ import { SustainabilityScoreData } from "../types";
 import Loader from "./Loader";
 import { ThemeContextUse } from "../context/ThemeProvider";
 
-function getScoreColor(score: number) {
+const getScoreColor = (score: number) => {
 	if (score >= 90) return "bg-green-500";
 	if (score >= 70) return "bg-yellow-500";
 	return "bg-red-500";
-}
+};
 
-function getScoreTrend(scores: number[]) {
+const getScoreTrend = (scores: number[]) => {
 	if (scores.length < 2) return 0;
 	const lastScore = scores[scores.length - 1];
 	const prevScore = scores[scores.length - 2];
 	return lastScore - prevScore;
-}
+};
 
-function getScoreImpactDescription(score: number) {
+const getScoreImpactDescription = (score: number) => {
 	if (score >= 90) return "Excellent sustainability performance";
 	if (score >= 70) return "Good sustainability efforts";
 	return "Needs improvement in sustainability practices";
-}
+};
 
 interface SustainablityScoreProps {
 	startDate: string;
