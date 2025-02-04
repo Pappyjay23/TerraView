@@ -1,50 +1,94 @@
-# React + TypeScript + Vite
+<div align="center">
+	<h1> TerraView </h1>
+</div>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview 🌍
 
-Currently, two official plugins are available:
+TerraView is a modern dashboard application for monitoring environmental metrics and sustainability data. It provides real-time visualization of carbon emissions, energy usage, and sustainability scores to help organizations track their environmental impact.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Snapshot 📸
 
-## Expanding the ESLint configuration
+![TerraView](https://github.com/user-attachments/assets/3b7fb125-7b60-4811-8407-6fdc3b9d8886)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### Key Features
+- Real-time emissions monitoring
+- Energy savings tracking
+- Air quality metrics
+- Weekly sustainability trends
+- Resource usage analytics
 
-- Configure the top-level `parserOptions` property like this:
+### Design & Architecture
+The application follows a component-based architecture using React, with:
+- Modular components for each visualization
+- Dynamic data fetching with date-range filtering
+- Dark/Light theme support
+- Responsive design for all screen sizes
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+### Assumptions
+- Data is updated on a daily basis
+- Emissions data includes transport, energy, and waste metrics
+- Sustainability scores are calculated on a 0-100 scale
+- Users need historical data access within a defined date range
+
+
+## Tech Stack ✨
+
+- [React.js](https://reactjs.org/) - UI Library
+  - Chosen for its component-based architecture and robust ecosystem
+- [Tailwind CSS](https://tailwindcss.com/) - Styling and UI
+  - Provides rapid UI development with utility-first approach
+- [Vite](https://vitejs.dev/) - Build tool
+  - Offers faster development experience and optimized builds
+- [Vercel](https://vercel.com/) - Hosting and Deployment
+  - Enables seamless deployment and excellent performance
+
+## Installation & Setup 💻
+
+Follow these steps to run TerraView on your local machine.
+
+### Prerequisites
+- Node.js (v14 or higher)
+- npm or yarn package manager
+
+### Clone this repository
+
+```bash
+git clone https://github.com/Pappyjay23/TerraView.git
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+### Navigate to the directory
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+```bash
+cd TerraView
 ```
+
+### Install Dependencies
+
+```bash
+npm install
+```
+
+### Run
+
+Run the development server to view the app.
+
+```bash
+npm run dev
+```
+
+Now, you can navigate to http://localhost:5173/ to view the app.
+
+### Build
+
+```bash
+npm run build
+```
+
+## Development Notes 📝
+- The app uses mock data for development purposes
+- Data visualization is handled using Recharts library
+- Theme switching is managed through React Context
+
+## Credits ✍
+
+Implementation by [@Pappyjay23](https://github.com/Pappyjay23)
