@@ -22,19 +22,19 @@ const App = () => {
 	return (
 		<Router>
 			<div
-				className={`flex h-screen ${
+				className={`flex h-[100dvh] ${
 					isDarkMode ? "bg-gray-900" : "bg-white"
 				}  text-gray-100`}>
 				<Sidebar />
 
 				<div className='flex-1 overflow-auto'>
 					<header
-						className={`flex items-center justify-between p-4 border-b w-full overflow-auto transition-all duration-500 ease-in-out ${
+						className={`flex items-center justify-between gap-5 p-4 border-b w-full overflow-auto transition-all duration-500 ease-in-out ${
 							isDarkMode
 								? "border-gray-800 bg-gray-900 text-gray-200"
 								: "border-gray-300 bg-white text-gray-900"
 						}`}>
-						<h1 className='text-[1rem] font-semibold hidden md:flex'>
+						<h1 className='text-[1rem] font-semibold hidden lg:flex'>
 							Sustainability Dashboard
 						</h1>
 						<div className='flex items-center gap-2 md:gap-4'>
