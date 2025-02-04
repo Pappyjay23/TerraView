@@ -1,4 +1,5 @@
 import { MdCalendarToday } from "react-icons/md";
+import { ThemeContextUse } from "../context/ThemeProvider";
 
 interface DateRangeSelectorProps {
 	startDate: string;
@@ -13,21 +14,47 @@ const DateRangeSelector = ({
 	onStartDateChange,
 	onEndDateChange,
 }: DateRangeSelectorProps) => {
+	const { isDarkMode } = ThemeContextUse();
+
 	return (
-		<div className='flex items-center space-x-4 bg-gray-800 p-2 rounded-lg'>
-			<MdCalendarToday className='text-gray-400' />
+		<div 
+			className={`flex items-center space-x-2 p-2 rounded-lg transition-all duration-300 ${
+				isDarkMode 
+					? "bg-gray-800 text-gray-200" 
+					: "bg-gray-100 text-gray-800"
+			}`}
+		>
+			<MdCalendarToday 
+				className={`${
+					isDarkMode ? "text-gray-400" : "text-gray-600"
+				}`} 
+			/>
 			<input
 				type='date'
 				value={startDate}
 				onChange={(e) => onStartDateChange(e.target.value)}
-				className='bg-gray-700 text-white px-2 py-1 rounded'
+				className={`bg-transparent text-sm outline-none w-28 ${
+					isDarkMode 
+						? "text-gray-200 placeholder-gray-500" 
+						: "text-gray-800 placeholder-gray-600"
+				}`}
 			/>
-			<span className='text-gray-400'>to</span>
+			<span 
+				className={`text-sm ${
+					isDarkMode ? "text-gray-400" : "text-gray-600"
+				}`}
+			>
+				to
+			</span>
 			<input
 				type='date'
 				value={endDate}
 				onChange={(e) => onEndDateChange(e.target.value)}
-				className='bg-gray-700 text-white px-2 py-1 rounded'
+				className={`bg-transparent text-sm outline-none w-28 ${
+					isDarkMode 
+						? "text-gray-200 placeholder-gray-500" 
+						: "text-gray-800 placeholder-gray-600"
+				}`}
 			/>
 		</div>
 	);

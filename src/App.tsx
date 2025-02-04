@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { MdSearch, MdNotifications } from "react-icons/md";
 import Sidebar from "./components/Sidebar";
@@ -6,10 +7,17 @@ import Calendar from "./pages/Calendar";
 import Statistics from "./pages/Statistics";
 import Settings from "./pages/Settings";
 import DarkModeToggle from "./components/DarkModeToggle";
+import DateRangeSelector from "./components/DateRangeSelector";
 import { ThemeContextUse } from "./context/ThemeProvider";
 
 const App = () => {
 	const { isDarkMode } = ThemeContextUse();
+	const [startDate, setStartDate] = useState(
+		new Date().toISOString().split("T")[0]
+	);
+	const [endDate, setEndDate] = useState(
+		new Date().toISOString().split("T")[0]
+	);
 
 	return (
 		<Router>
@@ -47,6 +55,12 @@ const App = () => {
 								/>
 							</div>
 							<DarkModeToggle />
+							<DateRangeSelector
+								startDate={startDate}
+								endDate={endDate}
+								onStartDateChange={setStartDate}
+								onEndDateChange={setEndDate}
+							/>
 							<button
 								className={`p-2 rounded-full transition-all duration-500 ease-in-out cursor-pointer ${
 									isDarkMode ? "hover:bg-gray-800" : "hover:bg-gray-200"
@@ -65,7 +79,10 @@ const App = () => {
 					</header>
 
 					<Routes>
-						<Route path='/' element={<Dashboard />} />
+						<Route
+							path='/'
+							element={<Dashboard startDate={startDate} endDate={endDate} />}
+						/>
 						<Route path='/calendar' element={<Calendar />} />
 						<Route path='/statistics' element={<Statistics />} />
 						<Route path='/settings' element={<Settings />} />
