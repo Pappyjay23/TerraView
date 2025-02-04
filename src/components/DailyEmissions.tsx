@@ -7,7 +7,7 @@ import { ThemeContextUse } from "../context/ThemeProvider";
 
 const COLORS = ["#ef4444", "#8b5cf6", "#eab308"];
 
-export default function DailyEmissions() {
+const DailyEmissions = () => {
 	const { isDarkMode } = ThemeContextUse();
 	const [data, setData] = useState<DailyEmissionsData[]>([]);
 	const [loading, setLoading] = useState(true);
@@ -21,12 +21,21 @@ export default function DailyEmissions() {
 	}, []);
 
 	return (
-		<div className={`${isDarkMode ? 'bg-gray-800' : 'bg-gray-200'} rounded-xl p-4 cursor-pointer scale-[0.97] hover:scale-[1] transition-all duration-500 ease-in-out`}>
+		<div
+			className={`${
+				isDarkMode ? "bg-gray-800" : "bg-gray-200"
+			} rounded-xl p-4 cursor-pointer scale-[0.97] hover:scale-[1] transition-all duration-500 ease-in-out`}>
 			<div className='flex items-center justify-between mb-4'>
-				<h3 className={`font-medium text-[80%] md:text-base ${isDarkMode ? 'text-gray-200' : 'text-gray-800'}`}>
+				<h3
+					className={`font-medium text-[80%] md:text-base ${
+						isDarkMode ? "text-gray-200" : "text-gray-800"
+					}`}>
 					Daily Carbon Emissions
 				</h3>
-				<span className={`text-[70%] md:text-xs ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+				<span
+					className={`text-[70%] md:text-xs ${
+						isDarkMode ? "text-gray-400" : "text-gray-600"
+					}`}>
 					Last 24h
 				</span>
 			</div>
@@ -53,10 +62,16 @@ export default function DailyEmissions() {
 					</PieChart>
 					<div className='flex items-center justify-center'>
 						<div className='text-center'>
-							<span className={`block text-xl md:text-3xl font-bold ${isDarkMode ? 'text-white' : 'text-gray-800'}`}>
+							<span
+								className={`block text-xl md:text-3xl font-bold ${
+									isDarkMode ? "text-white" : "text-gray-800"
+								}`}>
 								20%
 							</span>
-							<span className={`text-[80%] md:text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+							<span
+								className={`text-[80%] md:text-sm ${
+									isDarkMode ? "text-gray-400" : "text-gray-600"
+								}`}>
 								Reduction
 							</span>
 						</div>
@@ -65,4 +80,6 @@ export default function DailyEmissions() {
 			)}
 		</div>
 	);
-}
+};
+
+export default DailyEmissions;

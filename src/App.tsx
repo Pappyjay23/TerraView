@@ -8,12 +8,15 @@ import Settings from "./pages/Settings";
 import DarkModeToggle from "./components/DarkModeToggle";
 import { ThemeContextUse } from "./context/ThemeProvider";
 
-export default function App() {
+const App = () => {
 	const { isDarkMode } = ThemeContextUse();
 
 	return (
 		<Router>
-			<div className={`flex h-screen ${isDarkMode ? "bg-gray-900" : "bg-white"}  text-gray-100`}>
+			<div
+				className={`flex h-screen ${
+					isDarkMode ? "bg-gray-900" : "bg-white"
+				}  text-gray-100`}>
 				<Sidebar />
 
 				<div className='flex-1 overflow-auto'>
@@ -71,4 +74,6 @@ export default function App() {
 			</div>
 		</Router>
 	);
-}
+};
+
+export default App;

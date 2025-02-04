@@ -8,8 +8,9 @@ import {
 } from "react-icons/md";
 import { ThemeContextUse } from "../context/ThemeProvider";
 import AppLogo from "../assets/terra-view-logo.svg";
+import AppLogoWhite from "../assets/terra-view-logo-white.svg";
 
-export default function Sidebar() {
+const Sidebar = () => {
 	const location = useLocation();
 	const { isDarkMode } = ThemeContextUse();
 
@@ -41,13 +42,14 @@ export default function Sidebar() {
 								}`}>
 			{/* Logo */}
 			<div className='mb-8 flex md:flex-col lg:flex-row items-center gap-3'>
-            <Link
-					to='/'
-					className={`text-[1rem] font-extrabold tracking-[-1px] transition-colors duration-500 
-                            ${
-															isDarkMode ? "text-green-500" : "text-green-700"
-														}`}>
-					<img src={AppLogo} alt='AppLogo' className='h-9 w-9 object-cover border-white border rounded-full' />
+				<Link to='/' className={`transition-all duration-500 ease-in-out`}>
+					<img
+						src={isDarkMode ? AppLogo : AppLogoWhite}
+						alt='AppLogo'
+						className={`h-9 w-9 object-cover ${
+							isDarkMode ? "border-white" : "border-green-700"
+						} border-2 rounded-full`}
+					/>
 				</Link>
 				<Link
 					to='/'
@@ -55,13 +57,6 @@ export default function Sidebar() {
                         ${isDarkMode ? "text-green-500" : "text-green-700"}`}>
 					TerraView
 				</Link>
-				{/* <Link
-                    to='/'
-                    className={`text-[1rem] font-extrabold md:hidden tracking-[-1px] transition-colors duration-500 
-                        ${isDarkMode ? "text-green-500" : "text-green-700"}`}
-                >
-                    Terra
-                </Link> */}
 			</div>
 
 			{/* User Profile */}
@@ -149,4 +144,6 @@ export default function Sidebar() {
 			</div>
 		</aside>
 	);
-}
+};
+
+export default Sidebar;

@@ -1,7 +1,7 @@
 import { MdDarkMode, MdLightMode } from "react-icons/md";
 import { ThemeContextUse } from "../context/ThemeProvider";
 
-export default function DarkModeToggle() {
+const DarkModeToggle = () => {
 	const { isDarkMode, toggleTheme } = ThemeContextUse();
 
 	return (
@@ -20,4 +20,6 @@ export default function DarkModeToggle() {
 			)}
 		</button>
 	);
-}
+};
+
+export default DarkModeToggle;
